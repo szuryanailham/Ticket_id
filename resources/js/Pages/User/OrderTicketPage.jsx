@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 function OrderTicketPage({ ticket, detail }) {
     const { data, setData, post, processing, errors } = useForm({
         order_id: 0,
-        user_id: 2,
+        user_id: 0,
         ticket_id: ticket.id,
         quantity: 0,
         subtotal: 0,

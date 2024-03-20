@@ -23,7 +23,7 @@ class StoreOrder_itemRequest extends FormRequest
     {
         return [
             'order_id'=>['required'],
-            'user_id' => ['required', 'numeric', 'exists:users,id'],
+            'user_id' => ['required', 'numeric'],
             'ticket_id' => ['required', 'numeric', 'exists:tickets,id'],
             'quantity' => ['required', 'numeric', 'min:1'],
             'subtotal' => ['required', 'numeric', 'min:0'],

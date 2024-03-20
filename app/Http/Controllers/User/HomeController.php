@@ -14,7 +14,7 @@ use App\Http\Resources\UserCollection;
 
 // Request 
 use App\Http\Requests\StoreOrder_itemRequest;
-
+use Illuminate\Support\Facades\Auth;
 // model
 use App\Models\Concert;
 use App\Models\Order_item;
@@ -43,12 +43,9 @@ class HomeController extends Controller
 
     public function store( StoreOrder_itemRequest $request)
     {
-      
         $input = $request->validated();
-        $uuid = Str::uuid();
-        $shortenedUuid = substr($uuid, 0, 5);
-        $input["order_id"] = "ID-$shortenedUuid";
-        // input data 
+        $input["order_id"] = "ID-".substr(Str::uuid(), 0, 5);
+        $input["user_id"] = Auth::id();
         $create =Order_item::create($input);
         if($create){
             return redirect()->route('checkout.success', $create->order_id)->with([

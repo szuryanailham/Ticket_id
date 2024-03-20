@@ -1,9 +1,26 @@
+import { Link } from "@inertiajs/react";
 import React from "react";
-import { Button } from "@/Components/ui/button";
 function Navbar() {
     return (
-        <div className="w-screen bg-red-500">
-            <h1></h1>
+        <div className="w-screen bg-blue-500">
+            <ul>
+                <li>
+                    <Link href="#">Scedule</Link>
+                </li>
+                <li>
+                    <Link href="#">Speaker</Link>
+                </li>
+                <li>
+                    <Link href="#">Ticket</Link>
+                </li>
+                <li>
+                    <Link href="#">Contact</Link>
+                </li>
+                {/* button */}
+                <button>
+                    <Link href="#">Button</Link>
+                </button>
+            </ul>
         </div>
     );
 }
