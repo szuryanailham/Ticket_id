@@ -24,7 +24,6 @@ function OrderTicketPage({ ticket, detail }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Use the post function to submit the form data
         post("/checkout", {
             onSuccess: () => {
                 console.log("sukses bang");

@@ -9,6 +9,7 @@ Route::namespace('App\Http\Controllers\User')
         Route::get('/', [HomeController::class, 'index'])->name('/');
         Route::get('/concert/{slug}', 'HomeController@show');
         Route::post('/checkout', 'HomeController@store');
+        Route::post('/search', 'HomeController@index');
         Route::get('/checkout/{order:no_order}/success', 'HomeController@success')
             ->name('checkout.success');
     });

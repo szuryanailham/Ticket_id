@@ -32,4 +32,14 @@ class Concert extends Model
         ->saveSlugsTo('slug');
 }
 
+public function scopeFilter($query, $filters): void
+{
+    $query->where(function ($query) use ($filters) {
+        $query->where('concert', $filters['concert'])
+              ->orWhere('city', $filters['city'])
+              ->orWhere('date_time', $filters['date_time']);
+    });
+}
+
+
 }

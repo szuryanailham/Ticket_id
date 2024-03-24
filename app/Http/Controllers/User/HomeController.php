@@ -4,7 +4,9 @@ namespace App\Http\Controllers\User;
 // use
 use Inertia\Inertia;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Search_Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 // resource
 use App\Http\Resources\ConcertCollection;
@@ -19,13 +21,15 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Concert;
 use App\Models\Order_item;
 use App\Models\Ticket;
+use Illuminate\Contracts\Cache\Store;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index(Request $request) {
         $concerts = new ConcertCollection(Concert::paginate(5));
+        
         return inertia::render('User/HomePage', [
-            'concerts'=>$concerts
+            'concerts' => $concerts
         ]);
     }
     public function show($slug){
@@ -68,7 +72,5 @@ class HomeController extends Controller
             'ticket' =>new TicketCollection($TicketData)
         ]);
     }
-    
-    
 
 }

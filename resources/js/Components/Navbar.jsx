@@ -18,7 +18,9 @@ function Navbar() {
                 </li>
                 {/* button */}
                 <button>
-                    <Link href="#">Button</Link>
+                    <Link as="button" method="POST" href={"/logout"}>
+                        Log Out
+                    </Link>
                 </button>
             </ul>
         </div>
