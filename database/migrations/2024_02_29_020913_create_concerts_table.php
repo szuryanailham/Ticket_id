@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('concerts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('Slug')->unique();
+            $table->string('slug')->unique();
             $table->string('artist');
             $table->string('venue');
+            $table->foreignId('country_id');
             $table->dateTime('date_time');
             $table->timestamps();
         });

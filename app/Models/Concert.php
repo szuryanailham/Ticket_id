@@ -41,5 +41,9 @@ public function scopeFilter($query, $filters): void
     });
 }
 
+public function country(){
+    return $this->belongsTo(Country::class);
+}
+
 
 }
