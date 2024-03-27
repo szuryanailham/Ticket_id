@@ -1,10 +1,10 @@
 import { Link, useForm } from "@inertiajs/react";
 import React, { useEffect, useState } from "react";
-function ConcertCard({ concerts }) {
+function ConcertCard({ concerts, country, category, concert_list }) {
     const { data, setData, post, processing, errors } = useForm({
-        concert: "",
-        country: "",
-        date_time: "",
+        category: 0,
+        country: 0,
+        search: true,
     });
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.value);
@@ -12,10 +12,8 @@ function ConcertCard({ concerts }) {
 
     const HandleSubmit = (event) => {
         event.preventDefault();
-        post("/search", {
-            onSuccess: () => {
-                console.log("sukses bang");
-            },
+        post("/concert", {
+            onSuccess: () => {},
             onError: (errors) => {
                 console.log(errors);
             },
@@ -31,24 +29,24 @@ function ConcertCard({ concerts }) {
                 {/* name of concert */}
                 <div>
                     <select
-                        name="concert"
-                        id="countries"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full"
+                        name="category"
+                        id="category"
+                        className="  text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full"
                         onChange={(e) => onHandleChange(e)}
                     >
-                        <option value="" disabled selected>
-                            Search Event
+                        <option disabled selected>
+                            Search Category
                         </option>
-                        {concerts.data.map((concert) => (
-                            <option id={concert.id} value={concert.title}>
-                                {concert.title}
+                        {category.data.map((item) => (
+                            <option key={item.id} id={item.id} value={item.id}>
+                                {item.category_name}
                             </option>
                         ))}
                     </select>
                 </div>
                 {/* and name of concert */}
                 <div>
-                    {/* name country */}
+                    {/* name category */}
                     <select
                         id="countries"
                         name="country"
@@ -56,30 +54,16 @@ function ConcertCard({ concerts }) {
                         onChange={(e) => onHandleChange(e)}
                     >
                         <option selected>Choose a country</option>
-                        <option value="US">United States</option>
-                        <option value="CA">Canada</option>
-                        <option value="FR">France</option>
-                        <option value="DE">Germany</option>
+                        {country.data.map((item) => {
+                            return (
+                                <option value={item.id} key={item.id}>
+                                    {item.country_name}
+                                </option>
+                            );
+                        })}
                     </select>
                 </div>
-                {/* last name country */}
-                <div>
-                    <select
-                        id="date_time"
-                        name="date_time"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full"
-                        onChange={(e) => onHandleChange(e)}
-                    >
-                        <option value="" disabled selected>
-                            Search Event
-                        </option>
-                        {concerts.data.map((concert) => (
-                            <option id={concert.id} value={concert.date_time}>
-                                {concert.date_time}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                {/* last name category */}
                 <button
                     name="search"
                     type="submit"
@@ -104,15 +88,17 @@ function ConcertCard({ concerts }) {
                 </button>
             </form>
             {/* AND SEARCH */}
-            {concerts.data.map((concert) => {
-                return (
-                    <h1 key={concert.id}>
-                        <Link href={`/concert/${concert.Slug}`}>
-                            {concert.title}
-                        </Link>
-                    </h1>
-                );
-            })}
+            <div>
+                {concerts.data.map((concert) => {
+                    return (
+                        <h1 key={concert.id}>
+                            <Link href={`/concert/${concert.slug}`}>
+                                {concert.title}
+                            </Link>
+                        </h1>
+                    );
+                })}
+            </div>
         </div>
     );
 }

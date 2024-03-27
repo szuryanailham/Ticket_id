@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\country;
-use App\Http\Requests\StorecountryRequest;
-use App\Http\Requests\UpdatecountryRequest;
+use App\Models\Category;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 
-class CountryController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class CountryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorecountryRequest $request)
+    public function store(StoreCategoryRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class CountryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(country $country)
+    public function show(Category $category)
     {
         //
     }
@@ -43,7 +43,7 @@ class CountryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(country $country)
+    public function edit(Category $category)
     {
         //
     }
@@ -51,7 +51,7 @@ class CountryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatecountryRequest $request, country $country)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
         //
     }
@@ -59,7 +59,7 @@ class CountryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(country $country)
+    public function destroy(Category $category)
     {
         //
     }

@@ -3,13 +3,17 @@ import Navbar from "@/Components/Navbar";
 import Paginator from "@/Components/Paginator";
 import React from "react";
 
-function HomePage({ concerts }) {
+function HomePage({ concerts, country, category, concert_list }) {
     return (
         <>
             <Navbar />
-            <ConcertCard concerts={concerts} />
+            <ConcertCard
+                country={country}
+                category={category}
+                concerts={concerts}
+                concert_list={concert_list}
+            />
             <Paginator meta={concerts.meta} />
-            <h2></h2>
         </>
     );
 }
