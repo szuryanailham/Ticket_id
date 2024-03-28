@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->integer('quantity');
             $table->decimal('subtotal', 10, 2);
+            $table->enum('status',['Unpaid','Paid']);
             $table->timestamps();
         });
     }
