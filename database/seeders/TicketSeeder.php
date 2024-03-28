@@ -20,17 +20,17 @@ class TicketSeeder extends Seeder
             ],
             [
                 'concert_id' => 2,
-                'price' => 40.00,
+                'price' => 200000,
                 'quantity' => 80,
             ],
             [
                 'concert_id' => 3,
-                'price' => 60.00,
+                'price' => 300000,
                 'quantity' => 120,
             ],
             [
                 'concert_id' => 4,
-                'price' => 45.00,
+                'price' => 400000,
                 'quantity' => 90,
             ],
             [
@@ -40,27 +40,27 @@ class TicketSeeder extends Seeder
             ],
             [
                 'concert_id' => 6,
-                'price' => 65.00,
+                'price' => 100000,
                 'quantity' => 130,
             ],
             [
                 'concert_id' => 7,
-                'price' => 70.00,
+                'price' => 200000,
                 'quantity' => 140,
             ],
             [
                 'concert_id' => 8,
-                'price' => 48.00,
+                'price' => 200000,
                 'quantity' => 96,
             ],
             [
                 'concert_id' => 9,
-                'price' => 52.00,
+                'price' => 200000,
                 'quantity' => 104,
             ],
             [
                 'concert_id' => 10,
-                'price' => 42.00,
+                'price' => 600000,
                 'quantity' => 84,
             ],
         ];

@@ -1,7 +1,6 @@
 import React from "react";
 
 function Success({ order }) {
-    console.log(order.data);
     return (
         <>
             {order.data.map((item) => (
@@ -10,7 +9,12 @@ function Success({ order }) {
                     <h1>{item.user.name}</h1>
                     <h1>{item.ticket.concert.title}</h1>
                     <h1>{item.quantity}</h1>
-                    <h1>{item.subtotal}</h1>
+                    <h1>
+                        {new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                        }).format(item.subtotal)}
+                    </h1>
                 </div>
             ))}
         </>

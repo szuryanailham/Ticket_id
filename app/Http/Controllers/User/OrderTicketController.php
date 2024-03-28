@@ -67,6 +67,13 @@ class OrderTicketController extends Controller
         ]);
     }
 
+    public function payment($order_id){
+        // dd($order_id);
+        return Inertia::render('User/PanddingOrder',[
+            'order_id' => $order_id
+        ]);
+    }
+
     public function store( StoreOrder_itemRequest $request)
     {
         $input = $request->validated();
@@ -74,7 +81,7 @@ class OrderTicketController extends Controller
         $input["user_id"] = Auth::id();
         $create =Order_item::create($input);
         if($create){
-            return redirect()->route('checkout.success', $create->order_id)->with([
+            return redirect()->route('payment', $create->order_id)->with([
                 'message' => "Checkout successfully!",
                 'type' => 'success'
             ]);

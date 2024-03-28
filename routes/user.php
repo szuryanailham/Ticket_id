@@ -12,7 +12,7 @@ Route::namespace('App\Http\Controllers\User')
         Route::match(['get', 'post'], '/concert', [OrderTicketController::class, 'index'])->name('/concert');
         Route::get('/concert/{slug}', 'OrderTicketController@show');
         Route::post('/checkout', 'OrderTicketController@store');
-        // Route::post('/search', [OrderTicketController::class, 'index']);
+        Route::get('/payment/{order:no_order}', 'OrderTicketController@payment')->name('payment');
         Route::get('/checkout/{order:no_order}/success', 'OrderTicketController@success')
             ->name('checkout.success');
     });
